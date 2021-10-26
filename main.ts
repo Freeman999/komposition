@@ -65,7 +65,7 @@ basic.forever(function () {
             . # # # .
             # . # . #
             `)
-        basic.showNumber(Math.map(input.lightLevel(), 0, 255, 0, 2))
+        basic.showNumber(Math.round(Math.map(input.lightLevel(), 0, 255, 0, 2)))
         basic.pause(1000)
     }
 })
