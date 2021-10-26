@@ -12,7 +12,7 @@ function Musik (bpm: number) {
             } else if (Math.map(input.lightLevel(), 0, 255, 0, 2) == 1) {
                 music.playTone(392, music.beat(BeatFraction.Whole))
             } else if (Math.map(input.lightLevel(), 0, 255, 0, 2) == 2) {
-                music.playTone(262, music.beat(BeatFraction.Whole))
+                music.playTone(523, music.beat(BeatFraction.Whole))
             }
             music.playTone(262, music.beat(BeatFraction.Whole))
         }
@@ -22,13 +22,12 @@ input.onButtonPressed(Button.A, function () {
     radio.sendNumber(120)
     basic.pause(1000)
     radio.sendString("S")
+    basic.showString("S")
 })
 input.onButtonPressed(Button.AB, function () {
     müsig = true
-    bpm_erhalten = 120
+    bpm_erhalten = 210
     Musik(bpm_erhalten)
-    basic.pause(15000)
-    müsig = false
 })
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "S") {
@@ -40,14 +39,18 @@ radio.onReceivedString(function (receivedString) {
 })
 input.onButtonPressed(Button.B, function () {
     radio.sendString("E")
+    basic.showString("E")
 })
 let bpm_erhalten = 0
 let müsig = false
+müsig = false
 radio.setGroup(28)
 radio.setTransmitPower(4)
-müsig = false
 basic.forever(function () {
-    basic.showNumber(bpm_erhalten)
-    basic.pause(1000)
-    basic.showIcon(IconNames.EigthNote)
+    if (müsig) {
+        basic.showNumber(bpm_erhalten)
+        basic.showIcon(IconNames.EigthNote)
+    } else {
+        basic.showIcon(IconNames.Happy)
+    }
 })
