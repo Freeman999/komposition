@@ -67,8 +67,5 @@ basic.forever(function () {
             `)
         basic.showNumber(Math.round(Math.map(input.lightLevel(), 0, 255, 0, 2)))
         basic.pause(1000)
-        serial.writeValue("Lichtstärke roh", input.lightLevel())
-        serial.writeValue("Lichtstärke verteilt", Math.map(input.lightLevel(), 0, 255, 0, 2))
-        serial.writeValue("Lichtstärke vert/gerundet", Math.round(Math.map(input.lightLevel(), 0, 255, 0, 2)))
     }
 })
