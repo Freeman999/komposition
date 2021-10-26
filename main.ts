@@ -7,11 +7,11 @@ function Musik (bpm: number) {
         for (let index = 0; index < 2; index++) {
             music.playTone(262, music.beat(BeatFraction.Whole))
             music.playTone(262, music.beat(BeatFraction.Whole))
-            if (Math.map(input.lightLevel(), 0, 255, 0, 2) == 0) {
+            if (Math.round(Math.map(input.lightLevel(), 0, 255, 0, 2)) == 0) {
                 music.playTone(330, music.beat(BeatFraction.Whole))
-            } else if (Math.map(input.lightLevel(), 0, 255, 0, 2) == 1) {
+            } else if (Math.round(Math.map(input.lightLevel(), 0, 255, 0, 2)) == 1) {
                 music.playTone(392, music.beat(BeatFraction.Whole))
-            } else if (Math.map(input.lightLevel(), 0, 255, 0, 2) == 2) {
+            } else if (Math.round(Math.map(input.lightLevel(), 0, 255, 0, 2)) == 2) {
                 music.playTone(523, music.beat(BeatFraction.Whole))
             }
             music.playTone(262, music.beat(BeatFraction.Whole))
