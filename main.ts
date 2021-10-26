@@ -27,7 +27,7 @@ input.onButtonPressed(Button.A, function () {
 input.onButtonPressed(Button.AB, function () {
     debug_mode = true
     müsig = true
-    bpm_erhalten = 160
+    bpm_erhalten = 100
     Musik(bpm_erhalten)
 })
 radio.onReceivedString(function (receivedString) {
