@@ -25,8 +25,9 @@ input.onButtonPressed(Button.A, function () {
     basic.showString("S")
 })
 input.onButtonPressed(Button.AB, function () {
+    debug_mode = true
     müsig = true
-    bpm_erhalten = 210
+    bpm_erhalten = 160
     Musik(bpm_erhalten)
 })
 radio.onReceivedString(function (receivedString) {
@@ -42,15 +43,21 @@ input.onButtonPressed(Button.B, function () {
     basic.showString("E")
 })
 let bpm_erhalten = 0
+let debug_mode = false
 let müsig = false
 müsig = false
+debug_mode = true
 radio.setGroup(28)
 radio.setTransmitPower(4)
 basic.forever(function () {
-    if (müsig) {
-        basic.showNumber(bpm_erhalten)
-        basic.showIcon(IconNames.EigthNote)
-    } else {
-        basic.showIcon(IconNames.Happy)
+    if (debug_mode == false) {
+        if (müsig) {
+            basic.showNumber(bpm_erhalten)
+            basic.showIcon(IconNames.EigthNote)
+        } else {
+            basic.showIcon(IconNames.Happy)
+        }
+    } else if (debug_mode == true) {
+        basic.showNumber(Math.map(input.lightLevel(), 0, 255, 0, 2))
     }
 })
