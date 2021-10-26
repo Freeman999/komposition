@@ -46,7 +46,7 @@ let bpm_erhalten = 0
 let debug_mode = false
 let müsig = false
 müsig = false
-debug_mode = true
+debug_mode = false
 radio.setGroup(28)
 radio.setTransmitPower(4)
 basic.forever(function () {
@@ -58,6 +58,14 @@ basic.forever(function () {
             basic.showIcon(IconNames.Happy)
         }
     } else if (debug_mode == true) {
+        basic.showLeds(`
+            # . # . #
+            . # # # .
+            # # # # #
+            . # # # .
+            # . # . #
+            `)
         basic.showNumber(Math.map(input.lightLevel(), 0, 255, 0, 2))
+        basic.pause(1000)
     }
 })
