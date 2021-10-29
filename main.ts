@@ -33,7 +33,6 @@ input.onButtonPressed(Button.AB, function () {
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "S") {
         müsig = true
-        Musik(bpm_erhalten)
     } else if (receivedString == "E") {
         müsig = false
     }
@@ -50,22 +49,5 @@ debug_mode = false
 radio.setGroup(28)
 radio.setTransmitPower(4)
 basic.forever(function () {
-    if (debug_mode == false) {
-        if (müsig) {
-            basic.showNumber(bpm_erhalten)
-            basic.showIcon(IconNames.EigthNote)
-        } else {
-            basic.showIcon(IconNames.Happy)
-        }
-    } else if (debug_mode == true) {
-        basic.showLeds(`
-            # . # . #
-            . # # # .
-            # # # # #
-            . # # # .
-            # . # . #
-            `)
-        basic.showNumber(Math.round(Math.map(input.lightLevel(), 0, 255, 0, 2)))
-        basic.pause(1000)
-    }
+    Musik(bpm_erhalten)
 })
